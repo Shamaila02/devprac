@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    
+    <form id="gradeCalculator">
+        <label for="rollNo">Roll Number: </label>
+        <input type="text" id="rollNo" required><br><br>
+        
+        <label for="name">Name: </label>
+        <input type="text" id="name" required><br><br>
+        
+        <label for="marks">Enter Marks:</label>
+        <input type="number" id="marks" required>
+        
+        <p>Grade: <span id="grade"></span></p>
+    </form>
+    
+    <script>
+        const marksInput = document.getElementById('marks');
+        const gradeDisplay = document.getElementById('grade');
+
+        marksInput.addEventListener('input', function () {
+            const marks = parseFloat(marksInput.value);
+            let grade = '';
+
+            if (!isNaN(marks)) {
+                if (marks >= 90) {
+                    grade = 'A+';
+                } else if (marks >= 80) {
+                    grade = 'A';
+                } else if (marks >= 70) {
+                    grade = 'B';
+                } else if (marks >= 60) {
+                    grade = 'C';
+                } else if (marks >= 50) {
+                    grade = 'D';
+                } else {
+                    grade = 'F';
+                }
+            } else {
+                grade = '';
+            }
+
+            gradeDisplay.textContent = grade;
+        });
+    </script>
+</body>
+</html>
